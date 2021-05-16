@@ -1,0 +1,30 @@
+.popup__close-icon {
+  background-image: url(../../../images/Vector2.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border: none;
+  padding: 0;
+  color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: -42px;
+  right: -42px;
+  transform: rotate(-45deg);
+}
+.popup__close-icon:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 200ms ease-in-out;
+}
+@media screen and (max-width: 591px) {
+  .popup__close-icon {
+    width: 26px;
+    height: 26px;
+    top: -44.62px;
+    right: 2px;
+    
+}
+}

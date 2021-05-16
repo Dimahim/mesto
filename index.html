@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body>
+
+  <div class="page">
+
+    <header class="header">
+      <img class="header__logo" src="images/logo.png" alt="логотип">
+    </header>
+
+    <main class="main">
+
+      <section class="profile">
+        <img class="profile__avatar" src="./images/image.png" alt="аватар">
+        <div class="profile__profile-info">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button"></button>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+
+      <section class="elements">
+        <div class="elements__element">
+          <img class="elements__image" src="./images/kirill-pershin-1088404.jpg" alt="карачаевск">
+          <div class="elements__container">
+            <h2 class="elements__text">Карачаево-Черкесия</h2>
+            <button class="elements__group" type="button"></button>
+          </div>
+        </div>
+            <div class="elements__element">
+          <img class="elements__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
+          <div class="elements__container">
+            <h2 class="elements__text">Гора Эльбрус</h2>
+            <button class="elements__group" type="button"></button>
+          </div>
+        </div>  
+        <div class="elements__element">
+          <img class="elements__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
+          <div class="elements__container">
+            <h2 class="elements__text">Домбай</h2>
+            <button class="elements__group" type="button"></button>
+          </div>
+        </div>  
+        <div class="elements__element">
+          <img class="elements__image" src="./images/photo-grid-baikal-2.jpg" alt="Байкал">
+          <div class="elements__container">
+            <h2 class="elements__text">Байкал</h2>
+            <button class="elements__group" type="button"></button>
+          </div>
+        </div>  
+        <div class="elements__element">
+          <img class="elements__image" src="./images/photo-grid-sochi.jpg" alt="Сочи">
+          <div class="elements__container">
+            <h2 class="elements__text">Сочи</h2>
+            <button class="elements__group" type="button"></button>
+          </div>
+        </div>  
+        <div class="elements__element">
+          <img class="elements__image" src="./images/place-karelia.jpg" alt="Карелия">
+          <div class="elements__container">
+            <h2 class="elements__text">Карелия</h2>
+            <button class="elements__group" type="button"></button>
+          </div>
+        </div>  
+      </section>
+
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2021 Дмитрий Алхимов</p>
+      </footer>
+    </main>
+      <section class="popup">
+        <div class="popup__container">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <button class="popup__close-icon" type="button"></button>
+          <form class="popup__form">
+            <input type="text" class="popup__field" name="firstname" placeholder="Жак-Ив Кусто">
+            <input type="text" class="popup__field" name="info" placeholder="Исследователь океана">
+            <button class="popup__button" type="button">Сохранить</button>
+          </form> 
+        </div>
+      </section>
+  </div> 
+  <script src="./scripts/main.js"></script>
+</body> 
+</html>
