@@ -17,11 +17,11 @@ closePopup.addEventListener('click', function(){
   popup.classList.remove('popup_opened');
 })
 // Функция для изменения донных в профиле из формы и зякрытие попапа evt.preventDefault() отменяет стандартную отправку формы 
-function formSaveСlose (evt) {
+function formSubmitHandler (evt) {
   evt.preventDefault();
   profTitle.textContent = nameInput.value;
   profSubtitle.textContent = jobInput.value;
   popup.classList.remove('popup_opened');
 }
 // нажимаем на кнопку сохранить в форме.
-formButton.addEventListener('click', formSaveСlose);
+formButton.addEventListener('click', formSubmitHandler);
