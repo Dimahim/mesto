@@ -5,21 +5,18 @@
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 13px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.21px;
+  color: #000000;
 }
 .popup__field:last-of-type {
   margin-bottom: 0;
   
 }
-.popup__field::placeholder {
-  max-width: 358px;
-  left: 461px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 1.21;
-  color: #000000;
-  
-}
+
 @media screen and (max-width: 591px) {
   .popup__field {
     width: 238px;

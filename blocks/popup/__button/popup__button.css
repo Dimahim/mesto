@@ -12,6 +12,7 @@
   line-height: 1.22;
   text-align: center;
   margin-top: 48px;
+  margin-bottom: 37px;
   box-sizing: border-box;
   padding: 14px 124px 18px 125px;
   
@@ -32,5 +33,6 @@
     line-height: 1.21;
     text-align: center;
     margin-top: 45px;
+    margin-bottom: 0;
  }
 }
