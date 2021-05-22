@@ -1,4 +1,4 @@
-.popup__field {
+.form__field {
   width: 358px;
   border: none;
   margin: 0 0 30px 0;
@@ -12,13 +12,13 @@
   line-height: 1.21px;
   color: #000000;
 }
-.popup__field:last-of-type {
+.form__field:last-of-type {
   margin-bottom: 0;
   
 }
 
 @media screen and (max-width: 591px) {
-  .popup__field {
+  .form__field {
     width: 238px;
     
 }
