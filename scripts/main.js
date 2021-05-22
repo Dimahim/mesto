@@ -3,8 +3,8 @@ let profTitle = document.querySelector('.profile__title');
 let profSubtitle = document.querySelector('.profile__subtitle');
 let popup = document.querySelector('.popup');
 let closePopup = document.querySelector('.popup__close-icon');
-let nameInput = document.querySelector('.form__item_el_name');
-let jobInput = document.querySelector('.form__item_el_job');
+let nameInput = document.querySelector('.form__item_name');
+let jobInput = document.querySelector('.form__item_job');
 let formElement = document.querySelector('.form')
 
 // Функция для открытия попапа 
