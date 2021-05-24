@@ -5,7 +5,7 @@ let popup = document.querySelector('.popup');
 let closePopup = document.querySelector('.popup__close-icon');
 let nameInput = document.querySelector('.form__field_item_name');
 let jobInput = document.querySelector('.form__field_item_job');
-let formElement = document.querySelector('.form')
+let formElement = document.querySelector('.form');
 
 // Функция для открытия попапа 
 function openedPopup () {
