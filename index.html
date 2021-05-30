@@ -28,56 +28,15 @@
       </section>
 
       <section class="elements">
-        <article class="elements__element">
-          <img class="elements__image" src="./images/kirill-pershin-1088404.jpg" alt="Карачаево-Черкесия">
-          <div class="elements__container">
-            <h2 class="elements__text">Карачаево-Черкесия</h2>
-            <button class="elements__group" type="button" aria-label="лайк"></button>
-          </div>
-        </article>
-        <article class="elements__element">
-          <img class="elements__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
-          <div class="elements__container">
-            <h2 class="elements__text">Гора Эльбрус</h2>
-            <button class="elements__group" type="button" aria-label="лайк"></button>
-          </div>
-        </article>  
-        <article class="elements__element">
-          <img class="elements__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-          <div class="elements__container">
-            <h2 class="elements__text">Домбай</h2>
-            <button class="elements__group" type="button" aria-label="лайк"></button>
-          </div>
-        </article>  
-        <article class="elements__element">
-          <img class="elements__image" src="./images/photo-grid-baikal-2.jpg" alt="Байкал">
-          <div class="elements__container">
-            <h2 class="elements__text">Байкал</h2>
-            <button class="elements__group" type="button" aria-label="лайк"></button>
-          </div>
-        </article>  
-        <article class="elements__element">
-          <img class="elements__image" src="./images/photo-grid-sochi.jpg" alt="Сочи">
-          <div class="elements__container">
-            <h2 class="elements__text">Сочи</h2>
-            <button class="elements__group" type="button" aria-label="лайк"></button>
-          </div>
-        </article>  
-        <article class="elements__element">
-          <img class="elements__image" src="./images/place-karelia.jpg" alt="Карелия">
-          <div class="elements__container">
-            <h2 class="elements__text">Карелия</h2>
-            <button class="elements__group" type="button" aria-label="лайк"></button>
-          </div>
-        </article>  
+        
       </section>
 
       <footer class="footer">
         <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
       </footer>
     </main>
-
-      <div class="popup">
+<!-- Попап редактирования профиля -->
+      <div class="popup ">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <button class="popup__close-icon" type="button" aria-label="Закрыть"></button>
@@ -88,6 +47,39 @@
           </form> 
         </div>
       </div>
+<!-- Попап добавления  фотографий -->
+      <div class="popup popup_container_cards">
+        <div class="popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <button class="popup__close-icon popup__close-icon_close_cards" type="button" aria-label="Закрыть"></button>
+          <form class="popup__form form popup__form_add_cards" name="add-place">
+            <input type="text" name="title" class="form__field form__field_item_title" value="" placeholder="Название">
+            <input type="text" name="link" class="form__field form__field_item_link" value="" placeholder="Ссылка на картинку">
+            <button class="form__button form__button_add_cards" type="submit" aria-label="Сохранить">Создать</button>
+          </form> 
+        </div>
+      </div>
+<!-- Попап просмотра фотографий -->  
+      <div class="popup popup_content_image">
+        <div class="popup__image-container">
+          <button class="popup__close-icon popup__close-icon_close_image" type="button" aria-label="Закрыть"></button>
+          <figure class="popup__figure">
+            <img src="./images/kirill-pershin-1088404.jpg" class="popup__image" alt="фотография">
+            <figcaption class="popup__image-caption">Фотография</figcaption>
+          </figure>
+        </div>
+      </div>
+<!-- Шаблон карточки -->
+      <template class="elements__card">
+        <div class="elements__element">
+          <img class="elements__image" src="#" alt="_">
+          <div class="elements__container">
+            <h2 class="elements__text"></h2>
+            <button class="elements__group" type="button" aria-label="лайк"></button>
+          </div>
+          <button class="elements__btn elements__btn_action_del" aria-label="Удалить" type="button"></button>
+        </div>  
+      </template>
   </div> 
   <script src="./scripts/main.js"></script>
 </body> 
