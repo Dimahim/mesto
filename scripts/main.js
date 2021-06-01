@@ -92,28 +92,29 @@ const initialCards = [
 initialCards.forEach(function (element) {
   const userTemplate = document.querySelector('.elements').content;
   const userElement = userTemplate.querySelector('.elements__element').cloneNode(true);
-    
-  
+  // наполняем содержимым  
   userElement.querySelector('.elements__image').src = element.image;
   userElement.querySelector('.elements__text').textContent = element.name;
   userElement.querySelector('.elements__image').alt = element.name;
-    
   //Ставим лайк
-    
   userElement.querySelector('.elements__group').addEventListener('click', function (evt) {
   evt.target.classList.toggle('elements__group_like_active');
   });
   
   // Удаляем карточки
-
   userElement.querySelector('.elements__btn_action_del').addEventListener('click', function (evt) {
   evt.target.closest('.elements__element').remove();
   })
-  
-  
-  // Загружаем карточки в контейнере
+     // Загружаем карточки в контейнере
   usersOnline.append(userElement);
-
+  
+  userElement.querySelector('.elements__image').addEventListener('click', function (evt) {
+    popupClosCards.classList.add('popup_opened');
+    imageCardsmage.src = evt.target.src;
+    imageCardsmage.alt = evt.target.alt;
+    figcaption.textContent = evt.target.alt;
+  });
+  
   
 });
   
@@ -125,28 +126,23 @@ function addCardsElement(inputLinkCards, imputTitleCards) {
   const userTemplate = document.querySelector('.elements').content;
 // клонируем содержимое тега template
   const userElement = userTemplate.querySelector('.elements__element').cloneNode(true);
-
-
 // наполняем содержимым
   userElement.querySelector('.elements__image').src = inputLinkCards;
   userElement.querySelector('.elements__text').textContent = imputTitleCards;
   userElement.querySelector('.elements__image').alt = imputTitleCards;
-  // ставим лайк
-  
+    // ставим лайк
   userElement.querySelector('.elements__group').addEventListener('click', function (evt) {
   evt.target.classList.toggle('elements__group_like_active');
   });
-
   // Удаляем карточки
-
   userElement.querySelector('.elements__btn_action_del').addEventListener('click', function (evt) {
   evt.target.closest('.elements__element').remove();
   })
-  
-    
-  // отображаем на странице
+  imagePopup.addEventListener('click', openedPopupC);
+    // отображаем на странице
   usersOnline.prepend(userElement); 
-  
+ 
+
 };
 
 
@@ -168,20 +164,20 @@ const imagePopup = document.querySelector('.template-container');
 const buttnClosePopupCards = document.querySelector('.popup__close-icon_close_image');
 const figcaption = document.querySelector('.popup__image-caption');
 
-function openedPopupC (evt) {
-  popupClosCards.classList.add('popup_opened');
-  imageCardsmage.src = evt.target.src;
-  imageCardsmage.alt = evt.target.alt;
-  figcaption.textContent = evt.target.alt;
-}
+// function openedPopupC (evt) {
+//   popupClosCards.classList.add('popup_opened');
+//   imageCardsmage.src = evt.target.src;
+//   imageCardsmage.alt = evt.target.alt;
+//   figcaption.textContent = evt.target.alt;
+// }
 // // Функция для закрытия попапа
-function closePop () {
-  popupClosCards.classList.remove('popup_opened');
+// function closePop () {
+//   popupClosCards.classList.remove('popup_opened');
 
-}
-// Слушатель для открытия попапа с данными в форме 
-imagePopup.addEventListener('click', openedPopupC);
+// }
+// // // Слушатель для открытия попапа с данными в форме 
+// // imagePopup.addEventListener('click', openedPopupC);
   
-// Слушатель для закрытия попапа с данными в форме Закрытие попапа
-buttnClosePopupCards.addEventListener('click', closePop);
+// // // Слушатель для закрытия попапа с данными в форме Закрытие попапа
+// // buttnClosePopupCards.addEventListener('click', closePop);
 
