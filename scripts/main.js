@@ -7,14 +7,12 @@ let nameInput = document.querySelector('.form__field_item_name');
 let jobInput = document.querySelector('.form__field_item_job');
 let formElement = document.querySelector('.form');
 // переменные для попапа добавление карточек
-let popupAddCards = document.querySelector('.popup_container_cards');
-let addCards = document.querySelector('.profile__add-button');
-let makeCards = document.querySelector('.form__button_add_cards');
-let closePopupCards = document.querySelector('.popup__close-icon_close_cards');
-let formCards = document.querySelector('.popup__form_add_cards');
-let popupFormaAddCards = document.querySelector('.form__button_add_cards');
-let imputTitleCards = document.querySelector('.form__field_item_title');
-let inputLinkCards = document.querySelector('.form__field_item_link');
+const popupAddCards = document.querySelector('.popup_container_cards');
+const addCards = document.querySelector('.profile__add-button');
+const closePopupCards = document.querySelector('.popup__close-icon_close_cards');
+const formCards = document.querySelector('.popup__form_add_cards');
+const imputTitleCards = document.querySelector('.form__field_item_title');
+const inputLinkCards = document.querySelector('.form__field_item_link');
 const usersOnline = document.querySelector('.template-container');
 
 // Функция для открытия попапа редактированиие профиля
@@ -111,8 +109,11 @@ initialCards.forEach(function (element) {
   evt.target.closest('.elements__element').remove();
   })
   
+  
   // Загружаем карточки в контейнере
   usersOnline.append(userElement);
+
+  
 });
   
   
@@ -140,6 +141,7 @@ function addCardsElement(inputLinkCards, imputTitleCards) {
   userElement.querySelector('.elements__btn_action_del').addEventListener('click', function (evt) {
   evt.target.closest('.elements__element').remove();
   })
+  
     
   // отображаем на странице
   usersOnline.prepend(userElement); 
@@ -157,13 +159,28 @@ function formAddtHandler(evt) {
   formCards.addEventListener('submit', formAddtHandler);
 
 
-// Создание открытие попапа с карточками
+// Открываем попап с картинкой
+//__________________________________________________
+const popupClosCards = document.querySelector('.popup_content_image');
+const imageCardsmage = document.querySelector('.popup__image');
+const imagePopup = document.querySelector('.template-container');
+const buttnClosePopupCards = document.querySelector('.popup__close-icon_close_image');
+const popupQWE = document.querySelector('.popup__image-caption');
+const popupEWQ = document.querySelector('.elements__text');
 
-// initialCards.forEach( function (){
-//   const imageCards = document.querySelector('.elements__image');
-//   const popupCards = document.querySelector(.'popup_content_image');
-//   imageCards.addEventListener('click' function (){
-//     popupCards.classList.add('popup_opened');
-//   })
-// })
+function openedPopupC (evt) {
+  popupClosCards.classList.add('popup_opened');
+  imageCardsmage.src = evt.target.src;
+  
+}
+// // Функция для закрытия попапа
+function closePop () {
+  popupClosCards.classList.remove('popup_opened');
+
+}
+// Слушатель для открытия попапа с данными в форме 
+imagePopup.addEventListener('click', openedPopupC);
+  
+// Слушатель для закрытия попапа с данными в форме Закрытие попапа
+buttnClosePopupCards.addEventListener('click', closePop);
 
