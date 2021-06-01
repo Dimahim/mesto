@@ -152,7 +152,7 @@ function addCardsElement(inputLinkCards, imputTitleCards) {
     // ставим лайк
   userElement.querySelector('.elements__group').addEventListener('click', lekeCardsAdd );
   // Удаляем карточки
-  userElement.querySelector('.elements__btn_action_del').addEventListener('click', deleteCardsFunc);
+  userElement.querySelector('.elements__btn_action_del').addEventListener('click', deleteCardsAdd);
   // отображаем на странице
   usersOnline.prepend(userElement); 
   // обработчик открытия попапа просмотра картинок и добавление информации
