@@ -107,15 +107,18 @@ initialCards.forEach(function (element) {
   })
      // Загружаем карточки в контейнере
   usersOnline.append(userElement);
-  
+  ///
   userElement.querySelector('.elements__image').addEventListener('click', function (evt) {
-    popupClosCards.classList.add('popup_opened');
-    imageCardsmage.src = evt.target.src;
-    imageCardsmage.alt = evt.target.alt;
-    figcaption.textContent = evt.target.alt;
+  popupClosCards.classList.add('popup_opened');
+   imageCardsmage.src = evt.target.src;
+   imageCardsmage.alt = evt.target.alt;
+   figcaption.textContent = evt.target.alt;
+  
+  function closePop () {
+    popupClosCards.classList.remove('popup_opened');
+  };
+  buttnClosePopupCards.addEventListener('click', closePop);
   });
-  
-  
 });
   
   
@@ -138,13 +141,11 @@ function addCardsElement(inputLinkCards, imputTitleCards) {
   userElement.querySelector('.elements__btn_action_del').addEventListener('click', function (evt) {
   evt.target.closest('.elements__element').remove();
   })
-  imagePopup.addEventListener('click', openedPopupC);
+  
     // отображаем на странице
   usersOnline.prepend(userElement); 
  
-
 };
-
 
 // Функция отправки формы с данными карты
 function formAddtHandler(evt) {
@@ -156,28 +157,30 @@ function formAddtHandler(evt) {
   formCards.addEventListener('submit', formAddtHandler);
 
 
+
+
 // Открываем попап с картинкой
 //__________________________________________________
-const popupClosCards = document.querySelector('.popup_content_image');
-const imageCardsmage = document.querySelector('.popup__image');
-const imagePopup = document.querySelector('.template-container');
-const buttnClosePopupCards = document.querySelector('.popup__close-icon_close_image');
-const figcaption = document.querySelector('.popup__image-caption');
+ const popupClosCards = document.querySelector('.popup_content_image');
+ const imageCardsmage = document.querySelector('.popup__image');
+ const imagePopup = document.querySelector('.template-container');
+ const buttnClosePopupCards = document.querySelector('.popup__close-icon_close_image');
+ const figcaption = document.querySelector('.popup__image-caption');
 
-// function openedPopupC (evt) {
-//   popupClosCards.classList.add('popup_opened');
-//   imageCardsmage.src = evt.target.src;
-//   imageCardsmage.alt = evt.target.alt;
-//   figcaption.textContent = evt.target.alt;
+//  function openedPopupC (evt) {
+//    popupClosCards.classList.add('popup_opened');
+//    imageCardsmage.src = evt.target.src;
+//    imageCardsmage.alt = evt.target.alt;
+//    figcaption.textContent = evt.target.alt;
 // }
-// // Функция для закрытия попапа
+// //Функция для закрытия попапа
 // function closePop () {
-//   popupClosCards.classList.remove('popup_opened');
+//  popupClosCards.classList.remove('popup_opened');
 
 // }
-// // // Слушатель для открытия попапа с данными в форме 
-// // imagePopup.addEventListener('click', openedPopupC);
+// // Слушатель для открытия попапа с данными в форме 
+// imagePopup.addEventListener('click', openedPopupC);
   
-// // // Слушатель для закрытия попапа с данными в форме Закрытие попапа
-// // buttnClosePopupCards.addEventListener('click', closePop);
+// // Слушатель для закрытия попапа с данными в форме Закрытие попапа
+// buttnClosePopupCards.addEventListener('click', closePop);
 
