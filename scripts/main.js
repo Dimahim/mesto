@@ -96,6 +96,7 @@ initialCards.forEach(function (element) {
   
   userElement.querySelector('.elements__image').src = element.image;
   userElement.querySelector('.elements__text').textContent = element.name;
+  userElement.querySelector('.elements__image').alt = element.name;
     
   //Ставим лайк
     
@@ -129,7 +130,7 @@ function addCardsElement(inputLinkCards, imputTitleCards) {
 // наполняем содержимым
   userElement.querySelector('.elements__image').src = inputLinkCards;
   userElement.querySelector('.elements__text').textContent = imputTitleCards;
-
+  userElement.querySelector('.elements__image').alt = imputTitleCards;
   // ставим лайк
   
   userElement.querySelector('.elements__group').addEventListener('click', function (evt) {
@@ -165,13 +166,13 @@ const popupClosCards = document.querySelector('.popup_content_image');
 const imageCardsmage = document.querySelector('.popup__image');
 const imagePopup = document.querySelector('.template-container');
 const buttnClosePopupCards = document.querySelector('.popup__close-icon_close_image');
-const popupQWE = document.querySelector('.popup__image-caption');
-const popupEWQ = document.querySelector('.elements__text');
+const figcaption = document.querySelector('.popup__image-caption');
 
 function openedPopupC (evt) {
   popupClosCards.classList.add('popup_opened');
   imageCardsmage.src = evt.target.src;
-  
+  imageCardsmage.alt = evt.target.alt;
+  figcaption.textContent = evt.target.alt;
 }
 // // Функция для закрытия попапа
 function closePop () {
