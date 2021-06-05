@@ -72,8 +72,6 @@ function handleClosePopup() {
 // Слушатель для закрытия попапа с данными в форме Закрытие попапа
 profileСlosePopup.addEventListener('click', handleClosePopup);
 
-  
-
 // Функция для изменения донных в профиле из формы и зякрытие попапа evt.preventDefault() отменяет стандартную отправку формы 
 function submitProfileForm (evt) {
   evt.preventDefault();
@@ -84,7 +82,6 @@ function submitProfileForm (evt) {
 // Отправа формы
 profileFormPopup.addEventListener('submit', submitProfileForm);
  
-
 // Функция открытия попапа добавление карточек 
 function openPopupAddCarts () {
   openPopup (popupAddCards);
@@ -100,24 +97,14 @@ function closePopupAddCart () {
 //закрытие попапа добавление карточек
 cardsClosePopup.addEventListener('click', closePopupAddCart);
 
-
-const formItemLinks = inputLinkCards.value;
-const formItemTitle = imputTitleCards.value;
-
-const element = {
-link: formItemLinks,
-name: formItemTitle,
-};
-
-
 // Дефолтное создание карточек
 initialCards.forEach(function (elementInitial){
   const newCard = createCard (elementInitial);
   // Добавление карточек в контейнер 
-  usersOnline.prepend(newCard);
+  renderCards (newCard);
 });
 
-
+// Функция создания карточки 
   function createCard (element) {
   const userTemplate = document.querySelector('.elements').content;
   const userElement = userTemplate.querySelector('.elements__element').cloneNode(true);
@@ -137,6 +124,10 @@ initialCards.forEach(function (elementInitial){
 };
 
 
+// функция добавление карточки на страницу
+function renderCards (newCard) {
+  usersOnline.prepend(newCard);
+};
 
 //функция  открытие попапа просмотра карточек 
 function addCardsContainer (evt) {
@@ -164,11 +155,18 @@ function deleteCardsAdd (evt) {
 
 // Функция отправки формы с данными карты
 function submitAddCardFrom(evt) {
+  //переменные для полей ввода
+  const formItemLinks = inputLinkCards.value;
+  const formItemTitle = imputTitleCards.value;
+  //создаем объект с полями ввода формы
+  const element = {
+  link: formItemLinks,
+  name: formItemTitle,
+  }
   evt.preventDefault();
   usersOnline.prepend(createCard (element));
   closePopup (popupAddCards);
   formCardsPopup.reset();
-    
 }
 // Слушатель на форму для добавления картинок и подписи
 formCardsPopup.addEventListener('submit', submitAddCardFrom);
