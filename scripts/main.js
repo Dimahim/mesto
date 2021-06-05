@@ -1,16 +1,43 @@
-const openPopup = document.querySelector('.profile__edit-button');
+// cоздаем массив__________________________________________
+const initialCards = [
+  {
+    link: './images/kirill-pershin-1088404.jpg',
+    name: 'Карачаево-Черкесия'
+  },
+  {
+    link: './images/kirill-pershin-1404681-unsplash.png',
+    name: 'Гора Эльбрус'
+  },
+  {
+    link: './images/kirill-pershin-1556355-unsplash.jpg',
+    name: 'Домбай'
+  },
+  {
+    link: './images/photo-grid-baikal-2.jpg',
+    name: 'Байкал'
+  },
+  {
+    link: './images/photo-grid-sochi.jpg',
+    name: 'Сочи'
+  },
+  {
+    link: './images/place-karelia.jpg',
+    name: 'Карелия'
+  },
+];
+const profilePopupOpenButton = document.querySelector('.profile__edit-button');
 const profTitle = document.querySelector('.profile__title');
 const profSubtitle = document.querySelector('.profile__subtitle');
-const popup = document.querySelector('.popup');
-const closePopup = document.querySelector('.popup__close-icon');
+const profilePopup = document.querySelector('.popup_profile_editing');
+const profileСlosePopup = document.querySelector('.popup__close-icon_profile_edit');
 const nameInput = document.querySelector('.form__field_item_name');
 const jobInput = document.querySelector('.form__field_item_job');
-const formElement = document.querySelector('.form');
+const profileFormPopup = document.querySelector('.form_profile_edit');
 // переменные для попапа добавление карточек
 const popupAddCards = document.querySelector('.popup_container_cards');
-const addCards = document.querySelector('.profile__add-button');
-const closePopupCards = document.querySelector('.popup__close-icon_close_cards');
-const formCards = document.querySelector('.popup__form_add_cards');
+const buttonAddCards = document.querySelector('.profile__add-button');
+const cardsClosePopup = document.querySelector('.popup__close-icon_close_cards');
+const formCardsPopup = document.querySelector('.popup__form_add_cards');
 const imputTitleCards = document.querySelector('.form__field_item_title');
 const inputLinkCards = document.querySelector('.form__field_item_link');
 const usersOnline = document.querySelector('.template-container');
@@ -20,103 +47,111 @@ const imagePopup = document.querySelector('.template-container');
 const buttnClosePopupCards = document.querySelector('.popup__close-icon_close_image');
 const figcaption = document.querySelector('.popup__image-caption');
 
-// Функция для открытия попапа редактированиие профиля
-function openedPopup () {
+// Функция для открытия попапа 
+function openPopup (popup) {
   popup.classList.add('popup_opened');
+  
+}
+// Функция добавление информации в поля ввода профиля
+function addProfileOpenPopup () {
   nameInput.value = profTitle.textContent;
   jobInput.value = profSubtitle.textContent;
-}
-// Функция для закрытия попапа
-function closePopupIcon () {
-  popup.classList.remove('popup_opened');
+  openPopup (profilePopup);
 }
 // Слушатель для открытия попапа с данными в форме 
-openPopup.addEventListener('click', openedPopup);
-  
+profilePopupOpenButton.addEventListener('click', addProfileOpenPopup );
+
+// Функция для закрытия попапа
+function closePopup (popup) {
+  popup.classList.remove('popup_opened');
+}
+// Функция для закрытия попапа
+function handleClosePopup() {
+  closePopup(profilePopup);
+} 
 // Слушатель для закрытия попапа с данными в форме Закрытие попапа
-closePopup.addEventListener('click', closePopupIcon);
+profileСlosePopup.addEventListener('click', handleClosePopup);
+
   
 
 // Функция для изменения донных в профиле из формы и зякрытие попапа evt.preventDefault() отменяет стандартную отправку формы 
-function formSubmitHandler (evt) {
+function submitProfileForm (evt) {
   evt.preventDefault();
   profTitle.textContent = nameInput.value;
   profSubtitle.textContent = jobInput.value;
-  closePopupIcon ();
+  closePopup(profilePopup);
 }
 // Отправа формы
-formElement.addEventListener('submit', formSubmitHandler);
+profileFormPopup.addEventListener('submit', submitProfileForm);
  
 
-
-// Добавление карточек
-// функция открытия попапа добавление карточек
-function openedPopupCards () {
-  popupAddCards.classList.add('popup_opened');
+// Функция открытия попапа добавление карточек 
+function openPopupAddCarts () {
+  openPopup (popupAddCards);
 }
-  // открытие попапа добавление карточек
-addCards.addEventListener('click', openedPopupCards);
 
-// функция закрытия попапа добавление карточек
-function closedPopupCard () {
-  popupAddCards.classList.remove('popup_opened');
+ // Слушатель открытие попапа добавление карточек
+buttonAddCards.addEventListener('click', openPopupAddCarts);
+ 
+// Функция закрытия попапа добавление катрочек 
+function closePopupAddCart () {
+  closePopup (popupAddCards);
 }
 //закрытие попапа добавление карточек
-closePopupCards.addEventListener('click', closedPopupCard);
+cardsClosePopup.addEventListener('click', closePopupAddCart);
 
 
-// cоздаем массив__________________________________________
-const initialCards = [
-  {
-    image: './images/kirill-pershin-1088404.jpg',
-    name: 'Карачаево-Черкесия'
-  },
-  {
-    image: './images/kirill-pershin-1404681-unsplash.png',
-    name: 'Гора Эльбрус'
-  },
-  {
-    image: './images/kirill-pershin-1556355-unsplash.jpg',
-    name: 'Домбай'
-  },
-  {
-    image: './images/photo-grid-baikal-2.jpg',
-    name: 'Байкал'
-  },
-  {
-    image: './images/photo-grid-sochi.jpg',
-    name: 'Сочи'
-  },
-  {
-    image: './images/place-karelia.jpg',
-    name: 'Карелия'
-  },
-];
+const formItemLinks = inputLinkCards.value;
+const formItemTitle = imputTitleCards.value;
+
+const element = {
+link: formItemLinks,
+name: formItemTitle,
+};
+
 
 // Дефолтное создание карточек
-initialCards.forEach(function (element) {
-  const userTemplate = document.querySelector('.elements').content;
-  const userElement = userTemplate.querySelector('.elements__element').cloneNode(true);
-// наполняем содержимым  
-  userElement.querySelector('.elements__image').src = element.image;
-  userElement.querySelector('.elements__text').textContent = element.name;
-  userElement.querySelector('.elements__image').alt = element.name;
-  
-//Ставим лайк
-  userElement.querySelector('.elements__group').addEventListener('click', lekeCardsAdd );
-  
-// Удаляем карточки
-  userElement.querySelector('.elements__btn_action_del').addEventListener('click', deleteCardsAdd);
-  
-// Загружаем карточки в контейнере
-  usersOnline.append(userElement);
-// обработчик открытия попапа просмотра картинок и добавление информации
-  userElement.querySelector('.elements__image').addEventListener('click', addCardsContainer);
-// обработчик закрытия попапа
-  buttnClosePopupCards.addEventListener('click', closePop);
+initialCards.forEach(function (elementInitial){
+  const newCard = createCard (elementInitial);
+  // Добавление карточек в контейнер 
+  usersOnline.prepend(newCard);
 });
 
 
+  function createCard (element) {
+  const userTemplate = document.querySelector('.elements').content;
+  const userElement = userTemplate.querySelector('.elements__element').cloneNode(true);
+  // наполняем содержимым  
+  const newElementImage = userElement.querySelector('.elements__image');
+  const newElementText = userElement.querySelector('.elements__text');
+  newElementImage.src = element.link;
+  newElementImage.alt = element.name;
+  newElementText.textContent = element.name;
+  //Ставим лайк
+  userElement.querySelector('.elements__group').addEventListener('click', lekeCardsAdd );
+  // Удаляем карточки
+  userElement.querySelector('.elements__btn_action_del').addEventListener('click', deleteCardsAdd);
+  // обработчик открытия попапа просмотра картинок и добавление информации
+  newElementImage.addEventListener('click', addCardsContainer);
+  return userElement
+};
+
+
+
+//функция  открытие попапа просмотра карточек 
+function addCardsContainer (evt) {
+  openPopup (popupClosCards);
+  imageCardsmage.src = evt.target.src;
+  imageCardsmage.alt = evt.target.alt;
+  figcaption.textContent =  evt.target.alt;
+};
+// обработчик закрытия попапа просмотра картинок и добавление информации
+buttnClosePopupCards.addEventListener('click', closePopupLookCards);
+
+// функция закрытия попапа просмотра карточек
+function closePopupLookCards () {
+  popupClosCards.classList.remove('popup_opened');
+};
 
 // функция лайка
 function lekeCardsAdd (evt) {
@@ -126,48 +161,15 @@ function lekeCardsAdd (evt) {
 function deleteCardsAdd (evt) {
   evt.target.closest('.elements__element').remove();
 };
-//функция  открытие попапа просмотра карточек 
-function addCardsContainer (evt) {
-  popupClosCards.classList.add('popup_opened');
-  imageCardsmage.src = evt.target.src;
-  imageCardsmage.alt = evt.target.alt;
-  figcaption.textContent = evt.target.alt;
-};
-
-// функция закрытия попапа просмотра карточек
-function closePop () {
-  popupClosCards.classList.remove('popup_opened');
-};
-
-// Добавление карточек
-function addCardsElement(inputLinkCards, imputTitleCards) {
-// берем шаблон тега template
-  const userTemplate = document.querySelector('.elements').content;
-// клонируем содержимое тега template
-  const userElement = userTemplate.querySelector('.elements__element').cloneNode(true);
-// наполняем содержимым
-  userElement.querySelector('.elements__image').src = inputLinkCards;
-  userElement.querySelector('.elements__text').textContent = imputTitleCards;
-  userElement.querySelector('.elements__image').alt = imputTitleCards;
-    // ставим лайк
-  userElement.querySelector('.elements__group').addEventListener('click', lekeCardsAdd );
-  // Удаляем карточки
-  userElement.querySelector('.elements__btn_action_del').addEventListener('click', deleteCardsAdd);
-  // отображаем на странице
-  usersOnline.prepend(userElement); 
-  // обработчик открытия попапа просмотра картинок и добавление информации
-  userElement.querySelector('.elements__image').addEventListener('click', addCardsContainer);
- // обработчик закрытия попапа
-  buttnClosePopupCards.addEventListener('click', closePop);
-  
-};
 
 // Функция отправки формы с данными карты
-function formAddtHandler(evt) {
+function submitAddCardFrom(evt) {
   evt.preventDefault();
-  addCardsElement (inputLinkCards.value, imputTitleCards.value);
-  closedPopupCard ();
+  usersOnline.prepend(createCard (element));
+  closePopup (popupAddCards);
+  formCardsPopup.reset();
+    
 }
 // Слушатель на форму для добавления картинок и подписи
-  formCards.addEventListener('submit', formAddtHandler);
+formCardsPopup.addEventListener('submit', submitAddCardFrom);
 

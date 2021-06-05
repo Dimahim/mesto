@@ -3,6 +3,7 @@
   font-family: 'Inter', Arial, sans-serif;
   color: #FFFFFF;
   max-width: 100%;
+  min-height: 100vh;
   padding-top: 45px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
