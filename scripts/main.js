@@ -46,6 +46,7 @@ const imageCardsmage = document.querySelector('.popup__image');
 const imagePopup = document.querySelector('.template-container');
 const buttnClosePopupCards = document.querySelector('.popup__close-icon_close_image');
 const figcaption = document.querySelector('.popup__image-caption');
+const userTemplate = document.querySelector('.elements');
 
 // Функция для открытия попапа 
 function openPopup (popup) {
@@ -65,12 +66,9 @@ profilePopupOpenButton.addEventListener('click', addProfileOpenPopup );
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
 }
-// Функция для закрытия попапа
-function handleClosePopup() {
-  closePopup(profilePopup);
-} 
+
 // Слушатель для закрытия попапа с данными в форме Закрытие попапа
-profileСlosePopup.addEventListener('click', handleClosePopup);
+profileСlosePopup.addEventListener('click', () => closePopup(profilePopup));
 
 // Функция для изменения донных в профиле из формы и зякрытие попапа evt.preventDefault() отменяет стандартную отправку формы 
 function submitProfileForm (evt) {
@@ -82,20 +80,12 @@ function submitProfileForm (evt) {
 // Отправа формы
 profileFormPopup.addEventListener('submit', submitProfileForm);
  
-// Функция открытия попапа добавление карточек 
-function openPopupAddCarts () {
-  openPopup (popupAddCards);
-}
-
  // Слушатель открытие попапа добавление карточек
-buttonAddCards.addEventListener('click', openPopupAddCarts);
+buttonAddCards.addEventListener('click', () => openPopup (popupAddCards));
  
-// Функция закрытия попапа добавление катрочек 
-function closePopupAddCart () {
-  closePopup (popupAddCards);
-}
+
 //закрытие попапа добавление карточек
-cardsClosePopup.addEventListener('click', closePopupAddCart);
+cardsClosePopup.addEventListener('click', () => closePopup (popupAddCards));
 
 // Дефолтное создание карточек
 initialCards.forEach(function (elementInitial){
@@ -106,8 +96,8 @@ initialCards.forEach(function (elementInitial){
 
 // Функция создания карточки 
   function createCard (element) {
-  const userTemplate = document.querySelector('.elements').content;
-  const userElement = userTemplate.querySelector('.elements__element').cloneNode(true);
+  // Клонируем шаблон темплэйт 
+  const userElement = userTemplate.content.querySelector('.elements__element').cloneNode(true);
   // наполняем содержимым  
   const newElementImage = userElement.querySelector('.elements__image');
   const newElementText = userElement.querySelector('.elements__text');
@@ -137,12 +127,7 @@ function addCardsContainer (evt) {
   figcaption.textContent =  evt.target.alt;
 };
 // обработчик закрытия попапа просмотра картинок и добавление информации
-buttnClosePopupCards.addEventListener('click', closePopupLookCards);
-
-// функция закрытия попапа просмотра карточек
-function closePopupLookCards () {
-  popupClosCards.classList.remove('popup_opened');
-};
+buttnClosePopupCards.addEventListener('click', () => closePopup(popupClosCards));
 
 // функция лайка
 function lekeCardsAdd (evt) {
