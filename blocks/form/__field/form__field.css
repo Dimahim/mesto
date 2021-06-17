@@ -1,7 +1,6 @@
 .form__field {
   width: 358px;
   border: none;
-  margin-bottom: 30px;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 13px;
@@ -11,11 +10,11 @@
   font-size: 14px;
   line-height: 1.21px;
   color: #000000;
-}
-.form__field:last-of-type {
-  margin-bottom: 0;
+  
+  
   
 }
+
 
 @media screen and (max-width: 591px) {
   .form__field {
