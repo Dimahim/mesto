@@ -54,7 +54,7 @@ const popupCloseOverlay = document.querySelectorAll('.popup');
 //функция закрытия попапа по esc:
 function handleEscPopup(event) {
   const key = event.key;
-  if(key === 'Escape') {
+  if (key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
     }
@@ -81,7 +81,8 @@ function addProfileOpenPopup () {
   nameInput.value = profTitle.textContent;
   jobInput.value = profSubtitle.textContent;
   openPopup (profilePopup);
-  
+  toggleButtonState(profileFormPopup, config);
+  hideInputSelectorError(profileFormPopup, config);
 }
 // Слушатель для открытия попапа с данными в форме 
 profilePopupOpenButton.addEventListener('click', addProfileOpenPopup);
@@ -108,9 +109,17 @@ function submitProfileForm (evt) {
 }
 // Отправа формы
 profileFormPopup.addEventListener('submit', submitProfileForm);
+
+// функция открытия попапа добавление катрочек и редактирование полей
+function addCardsOpenPopup () {
+  openPopup (popupAddCards);
+  toggleButtonState(formCardsPopup, config);
+  hideInputSelectorError(formCardsPopup, config);
+  formCardsPopup.reset();
+}
  
  // Слушатель открытие попапа добавление карточек
-buttonAddCards.addEventListener('click', () => openPopup (popupAddCards));
+buttonAddCards.addEventListener('click', addCardsOpenPopup);
  
 
 //закрытие попапа добавление карточек
@@ -184,87 +193,3 @@ function submitAddCardFrom(evt) {
 }
 // Слушатель на форму для добавления картинок и подписи
 formCardsPopup.addEventListener('submit', submitAddCardFrom);
-
-// ________________________________________________Валидация форм__________________________________________________
-
- // Объект элементтов
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.form__field',
-  submitButtonSelector: '.form__button',
-  inactiveButtonClass: 'form__button_btn_notactive',
-  inputErrorClass: 'form__field_error_active',
-  errorClass: 'form__field-error_status_error'
-};
-
-
-    // функция добавления ошибки
-const showInputError = (formElement, inputElement, errorMessage, config) => {
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add(config.inputErrorClass);
-  errorElement.classList.add(config.errorClass);
-  errorElement.textContent = errorMessage;
-};
-  // функция удаления ошибки
-const hideInputError = (formElement, inputElement, config) => {
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove(config.inputErrorClass);
-  errorElement.classList.remove(config.errorClass);
-  errorElement.textContent = '';
-};
-  // Проверка на валидность
-const isValid = (formElement, inputElement, config) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, config);
-  } else {
-    hideInputError(formElement, inputElement, config);
-  }
-}; 
-  
-    
-  // Добавление полей ошибок всем полям создаем объект из полей ввода проходимся по ним и вешаем  слушателей
-const setEventListeners = (formElement, config) => {
-  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-  const buttonElement = formElement.querySelector(config.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, config);
-  
-  inputList.forEach((inputElement) => {
-  
-    inputElement.addEventListener('input', () => {
-  
-      isValid(formElement, inputElement, config);
-      toggleButtonState(inputList, buttonElement, config);
-    });
-  });
-}; 
-    // Перебор всех форм
-const enableValidation = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    });
-    setEventListeners(formElement, config);
-  });
-};
-    // Функция принимает массив полей
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  })
-}; 
-  
-  // создаем функцию блокировки кнопки
-const toggleButtonState = (inputList, buttonElement, config) => {
-  
-  if (hasInvalidInput(inputList, config)) {
-    buttonElement.classList.add(config.inactiveButtonClass);
-    buttonElement.setAttribute('disabled','disabled');
-    } else {
-      buttonElement.classList.remove(config.inactiveButtonClass);
-      buttonElement.disabled = '';
-    }
-}; 
-
-    
-    enableValidation(config);
