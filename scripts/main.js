@@ -55,19 +55,22 @@ const popupCloseOverlay = document.querySelectorAll('.popup');
 function handleEscPopup(event) {
   const key = event.key;
   if (key === 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
-    }
+    popupCloseOverlay.forEach(function (element) {
+      closePopup(element);
+    });
+    
   }
+};
 
-  //Функция закрытия попапа по оверлею и крестику
+//Функция закрытия попапа по оверлею и крестику
 function handleClickOverlay(evt) {
-  const popupOpened = document.querySelector(".popup_opened");
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-icon')
   ) {
-    closePopup(popupOpened);
+    popupCloseOverlay.forEach(function (element) {
+      closePopup(element);
+    });
   }
-}
+};
 
 // Функция для открытия попапа 
 function openPopup (popup) {
