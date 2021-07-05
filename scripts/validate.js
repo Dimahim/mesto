@@ -20,6 +20,17 @@ function enableValidation ({ formSelector, ...rest }) {
 };
 
 
+  // Добавление полей ошибок всем полям создаем объект из полей ввода проходимся по ним и вешаем  слушателей
+function setEventListeners (formElement, { inputSelector, ...rest }) {
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+    inputList.forEach(function (inputElement) {
+      inputElement.addEventListener('input', function () {
+        isValid(formElement, inputElement, rest);
+        toggleButtonState(formElement, rest);
+      });
+    });
+};
+  
     // функция добавления ошибки
 function showInputError (formElement, inputElement, errorMessage, { inputErrorClass, errorClass }) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
@@ -64,17 +75,5 @@ function toggleButtonState(formElement, { submitButtonSelector, inactiveButtonCl
     buttonElement.removeAttribute('disabled');
   }
 }
-
-
-  // Добавление полей ошибок всем полям создаем объект из полей ввода проходимся по ним и вешаем  слушателей
-function setEventListeners (formElement, { inputSelector, ...rest }) {
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-    inputList.forEach(function (inputElement) {
-      inputElement.addEventListener('input', function () {
-        isValid(formElement, inputElement, rest);
-        toggleButtonState(formElement, rest);
-      });
-    });
-};
 
 enableValidation(config);
