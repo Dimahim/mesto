@@ -8,19 +8,30 @@
   errorClass: 'form__field-error_status_error'
 };
 
+// Перебор всех форм
+function enableValidation ({ formSelector, ...rest }) {
+  const formList = Array.from(document.querySelectorAll(formSelector));
+  formList.forEach(function (formElement) {
+    formElement.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    });
+    setEventListeners(formElement, rest);
+  });
+};
+
 
     // функция добавления ошибки
-function showInputError (formElement, inputElement, errorMessage, config) {
+function showInputError (formElement, inputElement, errorMessage, { inputErrorClass, errorClass }) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add(config.inputErrorClass);
-  errorElement.classList.add(config.errorClass);
+  inputElement.classList.add(inputErrorClass);
+  errorElement.classList.add(errorClass);
   errorElement.textContent = errorMessage;
 };
   // функция удаления ошибки
-function hideInputError (formElement, inputElement, config) {
+function hideInputError (formElement, inputElement, { inputErrorClass, errorClass }) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove(config.inputErrorClass);
-  errorElement.classList.remove(config.errorClass);
+  inputElement.classList.remove(inputErrorClass);
+  errorElement.classList.remove(errorClass);
   errorElement.textContent = '';
 };
   // Проверка на валидность
@@ -33,49 +44,37 @@ function isValid (formElement, inputElement, config) {
 }; 
   
 // Функция убираем ошибки при открытии попапов
-function hideInputSelectorError(formElement, config) {
-  const inputList = formElement.querySelectorAll(config.inputSelector);
+function hideInputSelectorError(formElement, { inputSelector, ...rest} ) {
+  const inputList = formElement.querySelectorAll(inputSelector);
   inputList.forEach(function (inputElement) {
-    hideInputError (formElement, inputElement, config);
+    hideInputError (formElement, inputElement, rest);
   });
 }
 
-
-function toggleButtonState(formElement, config) {
-  const buttonElement = formElement.querySelector(config.submitButtonSelector);
+// Функция делаем  кнопку не активной или активной 
+function toggleButtonState(formElement, { submitButtonSelector, inactiveButtonClass }) {
+  const buttonElement = formElement.querySelector(submitButtonSelector);
   const formValid = formElement.checkValidity(); 
 
   if (!formValid) {
-    buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.classList.add(inactiveButtonClass);
     buttonElement.setAttribute('disabled', true);
   } else {
-    buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.classList.remove(inactiveButtonClass);
     buttonElement.removeAttribute('disabled');
   }
 }
 
 
   // Добавление полей ошибок всем полям создаем объект из полей ввода проходимся по ним и вешаем  слушателей
-function setEventListeners (formElement, config) {
-  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+function setEventListeners (formElement, { inputSelector, ...rest }) {
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
     inputList.forEach(function (inputElement) {
       inputElement.addEventListener('input', function () {
-        isValid(formElement, inputElement, config);
-        toggleButtonState(formElement, config);
+        isValid(formElement, inputElement, rest);
+        toggleButtonState(formElement, rest);
       });
     });
 };
 
-// Перебор всех форм
-function enableValidation (config) {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
-  formList.forEach(function (formElement) {
-    formElement.addEventListener('submit', function (evt) {
-    evt.preventDefault();
-    });
-    setEventListeners(formElement, config);
-  });
-};
-
-    
 enableValidation(config);
