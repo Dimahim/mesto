@@ -30,7 +30,8 @@ function setEventListeners (formElement, { inputSelector, ...rest }) {
       });
     });
 };
-  
+
+
     // функция добавления ошибки
 function showInputError (formElement, inputElement, errorMessage, { inputErrorClass, errorClass }) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
