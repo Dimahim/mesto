@@ -1,7 +1,14 @@
 import Card  from "./Card.js";
 import FormValidator from './FormValidator.js';
+import { 
+  profilePopupOpenButton, profTitle, profSubtitle, profilePopup, profileСlosePopup, nameInput, jobInput,
+  profileFormPopup, popupAddCards, buttonAddCards, cardsClosePopup, formCardsPopup, imputTitleCards,
+  inputLinkCards, usersOnline, popupClosCards, imageCardsmage, buttnClosePopupCards, 
+  figcaption } from './constants.js';
 
-const initialCards = [
+  
+// Массив с данными карточек
+  const initialCards = [
   {
     link: './images/kirill-pershin-1088404.jpg',
     name: 'Карачаево-Черкесия'
@@ -28,28 +35,6 @@ const initialCards = [
   },
 ];
 
-const profilePopupOpenButton = document.querySelector('.profile__edit-button');
-const profTitle = document.querySelector('.profile__title');
-const profSubtitle = document.querySelector('.profile__subtitle');
-const profilePopup = document.querySelector('.popup_profile_editing');
-const profileСlosePopup = document.querySelector('.popup__close-icon_profile_edit');
-const nameInput = document.querySelector('.form__field_item_name');
-const jobInput = document.querySelector('.form__field_item_job');
-const profileFormPopup = document.querySelector('.form_profile_edit');
-// переменные для попапа добавление карточек
-const popupAddCards = document.querySelector('.popup_container_cards');
-const buttonAddCards = document.querySelector('.profile__add-button');
-const cardsClosePopup = document.querySelector('.popup__close-icon_close_cards');
-const formCardsPopup = document.querySelector('.popup__form_add_cards');
-const imputTitleCards = document.querySelector('.form__field_item_title');
-const inputLinkCards = document.querySelector('.form__field_item_link');
-const usersOnline = document.querySelector('.template-container');
-const popupClosCards = document.querySelector('.popup_content_image');
-const imageCardsmage = document.querySelector('.popup__image');
-const imagePopup = document.querySelector('.template-container');
-const buttnClosePopupCards = document.querySelector('.popup__close-icon_close_image');
-const figcaption = document.querySelector('.popup__image-caption');
-
 //Объект элементов
 const config = {
   formSelector: '.popup__form',
@@ -58,7 +43,7 @@ const config = {
   inactiveButtonClass: 'form__button_btn_notactive',
   inputErrorClass: 'form__field_error_active',
   errorClass: 'form__field-error_status_error'
- };
+};
 
 //Включаем валидацию форм
 const formValidatorEdit = new FormValidator(config, profileFormPopup);
@@ -143,12 +128,17 @@ buttonAddCards.addEventListener('click', openAddCardPopup);
 //закрытие попапа добавление карточек
 cardsClosePopup.addEventListener('click', () => closePopup (popupAddCards));
 
-// Перебираем массив и добавляем рарточки по дефолту на
-initialCards.forEach((item) => {
+// Функция создания карточек
+const createCards = (item) => {
   const card = new Card(item, '.elements', handleCardClick);
   const cardElement = card.generateCard();
-  // Добавляем в DOM
-  usersOnline.prepend(cardElement);
+  return cardElement
+};
+
+// Перебираем массив и добавляем рарточки по дефолту на
+initialCards.forEach((item) => {
+  // Добавляем в DOM карточку с данными из массива 
+  usersOnline.prepend(createCards(item));
 });
 
 //функция  открытие попапа просмотра карточек 
@@ -174,11 +164,8 @@ function submitAddCardForm(evt) {
   link: formItemLinks,
   name: formItemTitle,
   }
-  // берем сласс карточки и аргументом подставляем данные полей ввода 
-  const cardForm = new Card(element, '.elements', handleCardClick);
-  const cardElementForm = cardForm.generateCard();
-  // Добавляем в DOM
-  usersOnline.prepend(cardElementForm);
+  // Добавляем в DOM карточку с данными из инпутов
+  usersOnline.prepend(createCards(element));
   
   // закрываем попап
   closePopup (popupAddCards);
