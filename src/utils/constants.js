@@ -1,3 +1,40 @@
+//импорт картинок для Webpack 
+import carachaevo from '../images/kirill-pershin-1088404.jpg';
+import elbrus from '../images/kirill-pershin-1404681-unsplash.png';
+import dombiy from '../images/kirill-pershin-1556355-unsplash.jpg';
+import bikal from '../images/photo-grid-baikal-2.jpg';
+import sochi from '../images/photo-grid-sochi.jpg';
+import karelia from '../images/place-karelia.jpg';
+
+// Массив с данными карточек
+const initialCards = [
+  {
+    link: carachaevo,
+    name: 'Карачаево-Черкесия'
+  },
+  {
+    link: elbrus,
+    name: 'Гора Эльбрус'
+  },
+  {
+    link: dombiy,
+    name: 'Домбай'
+  },
+  {
+    link: bikal,
+    name: 'Байкал'
+  },
+  {
+    link: sochi,
+    name: 'Сочи'
+  },
+  {
+    link: karelia,
+    name: 'Карелия'
+  },
+];
+
+
 const profilePopupOpenButton = document.querySelector('.profile__edit-button');
 const profTitle = document.querySelector('.profile__title');
 const profSubtitle = document.querySelector('.profile__subtitle');
@@ -30,33 +67,7 @@ const config = {
   errorClass: 'form__field-error_status_error'
 };
 
-// Массив с данными карточек
-const initialCards = [
-  {
-    link: './src/images/kirill-pershin-1088404.jpg',
-    name: 'Карачаево-Черкесия'
-  },
-  {
-    link: './src/images/kirill-pershin-1404681-unsplash.png',
-    name: 'Гора Эльбрус'
-  },
-  {
-    link: './src/images/kirill-pershin-1556355-unsplash.jpg',
-    name: 'Домбай'
-  },
-  {
-    link: './src/images/photo-grid-baikal-2.jpg',
-    name: 'Байкал'
-  },
-  {
-    link: './src/images/photo-grid-sochi.jpg',
-    name: 'Сочи'
-  },
-  {
-    link: './src/images/place-karelia.jpg',
-    name: 'Карелия'
-  },
-];
+
 
 export { profilePopupOpenButton, profTitle, profSubtitle, profilePopup, profileСlosePopup, nameInput, jobInput, 
   profileFormPopup, popupAddCards, buttonAddCards, cardsClosePopup, formCardsPopup, imputTitleCards, inputLinkCards, 
