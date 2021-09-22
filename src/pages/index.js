@@ -81,8 +81,10 @@ function submitAddCardForm() {
   link: formItemLinks,
   name: formItemTitle,
   }
-  //Создаем и размещаем карточку на странице
-  usersOnline.prepend(createCards(element));
+  // создаем карточку
+  const newCardForm = createCards(element)
+  //Размещаем карточку на странице
+  defaultCardList.addItem(newCardForm);
   popupCardsAdd.closePopup()
 };
 
@@ -95,7 +97,9 @@ const createCards = (item) => {
 
 // Добавляем карточки по дефолту
 const defaultCardList = new Section ({
-  items: initialCards, 
+  //массив карточек
+  items: initialCards,
+  //функция отвечает за создание и отрисовку данных на странице.
   renderer: (item) => {
     const cards = createCards(item);
     defaultCardList.addItem(cards);

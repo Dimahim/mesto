@@ -23,9 +23,12 @@ export default class Card {
     this._setEventListeners()
     
 
-    this._element.querySelector('.elements__image').src = this._link;
-    this._element.querySelector('.elements__text').textContent = this._name;
-    this._element.querySelector('.elements__text').textContent = this._name;
+    this._newImageElement = this._element.querySelector('.elements__image');
+    this._newTextElement = this._element.querySelector('.elements__text');
+    this._newImageElement.src = this._link;
+    this._newImageElement.alt = this._name;
+    this._newTextElement.textContent = this._name;
+    
     
     
     return this._element;
@@ -38,8 +41,7 @@ export default class Card {
   
   // метод удаление карточки
   _deleteCard() {
-    const elementDelete = this._element.querySelector('.elements__btn_action_del');
-    elementDelete.closest('.elements__element').remove();
+    this._element.remove();
   };
 
    // Добавляем обработчики  на лайк и удаление карточки

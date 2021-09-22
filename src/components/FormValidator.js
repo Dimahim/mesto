@@ -6,6 +6,8 @@ export default class FormValidator {
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
+    this._inputList = formElement.querySelectorAll(this._inputSelector);
+    this._submitButton = formElement.querySelector(this._submitButtonSelector);
 
     this._formElement = formElement;
   };
@@ -36,23 +38,21 @@ export default class FormValidator {
 
   // Функция убираем ошибки при открытии попапов
   hideInputSelectorError() {
-    const inputList = this._formElement.querySelectorAll(this._inputSelector);
-    inputList.forEach((inputElement) => {
+      this._inputList.forEach((inputElement) => {
       this._hideInputError (inputElement);
     });
   };
 
   // Функция делаем  кнопку не активной или активной 
   toggleButtonState() {
-    const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
     const formValid = this._formElement.checkValidity(); 
 
     if (!formValid) {
-      buttonElement.classList.add(this._inactiveButtonClass);
-      buttonElement.setAttribute('disabled', true);
+      this._submitButton.classList.add(this._inactiveButtonClass);
+      this._submitButton.setAttribute('disabled', true);
     } else {
-      buttonElement.classList.remove(this._inactiveButtonClass);
-      buttonElement.removeAttribute('disabled');
+      this._submitButton.classList.remove(this._inactiveButtonClass);
+      this._submitButton.removeAttribute('disabled');
     }
   };
 
