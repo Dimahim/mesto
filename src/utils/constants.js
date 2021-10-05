@@ -43,6 +43,7 @@ const profileСlosePopup = document.querySelector('.popup__close-icon_profile_ed
 const nameInput = document.querySelector('.form__field_item_name');
 const jobInput = document.querySelector('.form__field_item_job');
 const profileFormPopup = document.querySelector('.form_profile_edit');
+const avatarForm = document.querySelector('.popup__form_avatar');
 // переменные для попапа добавление карточек
 const popupAddCards = document.querySelector('.popup_container_cards');
 const buttonAddCards = document.querySelector('.profile__add-button');
@@ -56,6 +57,8 @@ const imageCardsmage = document.querySelector('.popup__image');
 const imagePopup = document.querySelector('.template-container');
 const buttnClosePopupCards = document.querySelector('.popup__close-icon_close_image');
 const figcaption = document.querySelector('.popup__image-caption');
+const avatarAdd = document.querySelector('.profile__avatar');
+const inputLinkAvatar = document.querySelector('.form__field_avatar');
 
 // обект валидации
 const config = {
@@ -69,6 +72,6 @@ const config = {
 
 
 
-export { profilePopupOpenButton, profTitle, profSubtitle, profilePopup, profileСlosePopup, nameInput, jobInput, 
+export { profilePopupOpenButton, profTitle, avatarForm, profSubtitle, profilePopup, profileСlosePopup, nameInput, jobInput, 
   profileFormPopup, popupAddCards, buttonAddCards, cardsClosePopup, formCardsPopup, imputTitleCards, inputLinkCards, 
-  usersOnline, popupClosCards, imageCardsmage, imagePopup, buttnClosePopupCards, figcaption, config, initialCards }
+  usersOnline, popupClosCards, imageCardsmage, imagePopup, inputLinkAvatar, buttnClosePopupCards, figcaption, config, initialCards, avatarAdd }

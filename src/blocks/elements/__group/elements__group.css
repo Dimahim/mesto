@@ -6,7 +6,7 @@
   border: none;
   width: 24px;
   height: 19px;
-  margin-top: 31px;
+  margin-bottom: 3px;
 }
 .elements__group:hover {
   cursor: pointer;

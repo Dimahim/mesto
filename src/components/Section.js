@@ -1,3 +1,4 @@
+// Класс переберает элементы карточек и добавляет  на страницу
 export default class Section {
   constructor ({ items, renderer }, selectorContainer) {
     this._items = items;
@@ -7,10 +8,12 @@ export default class Section {
   };
 
   //отрисовка всех элементов  на странице
-  initialCards() {
-    this._items.forEach(item => {
-      this._renderer(item);
+  initialCards(items) {
+    items.forEach(item => {
+    this._renderer(item);
+      
     });
+    
   }
 
   //принимает DOM-элемент и добавляет его в контейнер

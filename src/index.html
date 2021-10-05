@@ -49,6 +49,18 @@
           </form> 
         </div>
       </div>
+<!-- Попап редактирования аватара -->
+      <div class="popup popup_container_avatar">
+        <div class="popup__container">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <button class="popup__close-icon popup__close-icon_avatar" type="button" aria-label="Закрыть"></button>
+          <form class="popup__form form popup__form_avatar" name="avatar" novalidate>
+            <input type="url" name="avatar" id="avatar" class="form__field form__field_avatar" placeholder="Ссылка на аватар"  required>
+            <span class="form__field-error" id="avatar-error">Ошибка</span>
+            <button class="form__button  form__button_submit_active"  type="submit" aria-label="Сохранить">Сохранить</button>
+          </form> 
+        </div>
+      </div>
 <!-- Попап добавления  фотографий -->
       <div class="popup popup_container_cards">
         <div class="popup__container">
@@ -73,15 +85,29 @@
           </figure>
         </div>
       </div>
+<!-- Попап удаления карточки -->
+      <div class="popup popup_container_delete-cards">
+        <div class="popup__container">
+          <h2 class="popup__title">Вы уверены?</h2>
+          <button class="popup__close-icon popup__close_delete-cards" type="button" aria-label="Закрыть"></button>
+          <form class="popup__form form popup__form_delete-cards" name="delete-cards" novalidate>
+            <button class="form__button  form__button_submit_active"  type="submit" aria-label="Да">Да</button>
+          </form> 
+        </div>
+      </div>
+
 <!-- Шаблон карточки -->
       <template class="elements">
         <div class="elements__element">
           <img class="elements__image" src="#" alt="_">
           <div class="elements__container">
             <h2 class="elements__text"></h2>
-            <button class="elements__group" type="button" aria-label="лайк"></button>
+            <div class="elements__container-like">
+              <button class="elements__group" type="button" aria-label="лайк"></button>
+              <span class="elements__number-likes">0</span>
+            </div>
           </div>
-          <button class="elements__btn elements__btn_action_del " aria-label="Удалить" type="button"></button>
+          <button class="elements__btn elements__btn_active" aria-label="Удалить" type="button"></button>
         </div>  
       </template>
   </div>

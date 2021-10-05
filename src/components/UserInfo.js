@@ -1,7 +1,9 @@
+//Класс редактирование профиля собирает данные и добавляет на страницу
 export default class UserInfo {
-  constructor({ nameSelector, infoSelector }) {
+  constructor({ nameSelector, infoSelector, avatarSelector}) {
     this._name = document.querySelector(nameSelector);
-    this._info = document.querySelector(infoSelector);;
+    this._info = document.querySelector(infoSelector);
+    this._avatar = document.querySelector(avatarSelector);
     
   }
 
@@ -14,10 +16,16 @@ export default class UserInfo {
   }
 
   //принимает новые данные пользователя и добавляет их на страницу.
-  setUserInfo({ name, info }) {
-    this._name.textContent = name;
-    this._info.textContent = info;
+  setUserInfo(data) {
+    this._name.textContent = data.name;
+    this._info.textContent = data.about;
   }
 
+  //Меняем аватар
+  setUserAvatar(data) {
+    this._avatar.setAttribute("src", data.avatar);
+    
+  }
+ 
 }
 

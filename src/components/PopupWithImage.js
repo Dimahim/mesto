@@ -1,3 +1,4 @@
+// Попап просмотра картинок
 import Popup from './Popup.js';
 // создаем новый класс наследуя от клсса Попапа
 export default class PopupWithImage extends Popup {
