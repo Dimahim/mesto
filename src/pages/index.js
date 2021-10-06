@@ -125,7 +125,7 @@ function handleCardClick (link, name) {
 };
 
 // обработчик закрытия попапа просмотра картинок и добавление информации
-buttnClosePopupCards.addEventListener('click', () => popupShowImageCards.closePopup('.popup_content_image'));
+buttnClosePopupCards.addEventListener('click', () => popupShowImageCards.closePopup());
 
 
 

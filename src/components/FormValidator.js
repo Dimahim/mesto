@@ -57,16 +57,15 @@ export default class FormValidator {
   };
 
   
-    // Находим поля ввода
+    // Находим поля ввода вешаем обработчики
   _setEventListeners() {
-    const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-      inputList.forEach((inputElement) => {
-        inputElement.addEventListener('input', () => {
-          this._isValid(inputElement);
-          this.toggleButtonState();
-        });
-        
+    this._inputList.forEach((inputElement) => {
+      inputElement.addEventListener('input', () => {
+        this._isValid(inputElement);
+         this.toggleButtonState();
       });
+        
+    });
       
   };
 
